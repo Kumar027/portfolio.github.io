@@ -162,3 +162,291 @@ export default function Portfolio() {
     </div>
   )
 }
+/*
+Three project detail pages (React components) added to the single code file.
+Each project component is exportable and intended to be used in a React app with routing.
+Theme: Navy & Gold
+Instructions:
+- Place your photo at: /images/your-photo.jpg (already uploaded - replace path if needed)
+- Place your resume at: /assets/resume.pdf (already uploaded - replace path if needed)
+- This single file exports a ProjectsWrapper component that includes routes for each project.
+- Use React Router in your app to mount <ProjectsWrapper /> or import the individual components.
+*/
+
+import React from "react";
+
+// Project: Customer Shopping Behaviour Analysis (Detailed Case Study)
+export function ProjectCustomer() {
+  return (
+    <div className="min-h-screen bg-[#031025] text-gray-100 p-8">
+      <div className="max-w-4xl mx-auto bg-[#041827] p-8 rounded-lg border border-gray-800">
+        <header className="flex items-center gap-6 mb-6">
+          <img src="/images/your-photo.jpg" alt="Kumar Gaurav" className="w-24 h-24 rounded-md border-2 border-[#C69B30] object-cover" />
+          <div>
+            <h1 className="text-2xl font-bold">Customer Shopping Behaviour Analysis</h1>
+            <p className="text-sm text-gray-300 mt-1">End-to-end case study using Python, MySQL and Power BI — 3,900 transactions analysed.</p>
+            <a href="/assets/resume.pdf" className="inline-block mt-2 text-xs bg-[#C69B30] text-[#031025] px-3 py-1 rounded">Download Resume</a>
+          </div>
+        </header>
+
+        <section className="mb-6">
+          <h2 className="text-xl font-semibold mb-2">Project Summary</h2>
+          <p className="text-gray-300">This analysis examines customer shopping behaviour across product categories to identify spending patterns, subscription adoption, and opportunities for retention and revenue growth. The dataset contains 3,900 purchase records and 18 columns covering demographics, transaction details and behaviour signals.</p>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Dataset & Key Features</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Rows: <strong>3,900</strong></li>
+            <li>Columns: <strong>18</strong></li>
+            <li>Key fields: Age, Gender, Location, Subscription Status, Item, Category, Purchase Amount, Season, Size, Discount, Previous Purchases, Rating, Shipping Type.</li>
+            <li>Missing values: 37 ratings (imputed by category median during cleaning).</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Work Completed</h3>
+          <ol className="text-gray-300 list-decimal list-inside mt-2 space-y-2">
+            <li><strong>Python & EDA:</strong> Data loading with pandas, df.info(), df.describe(), distribution checks and visual exploration.</li>
+            <li><strong>Cleaning:</strong> Imputed missing review ratings, standardized column names to snake_case, removed redundant promo_code column, handled outliers and duplicates.</li>
+            <li><strong>Feature engineering:</strong> Created <code>age_group</code> and <code>purchase_frequency_days</code> to support segmentation and churn analysis.</li>
+            <li><strong>MySQL:</strong> Loaded cleaned dataframe into MySQL, created schema and indexes, ran analytical queries to compute KPIs.</li>
+            <li><strong>Power BI:</strong> Connected to MySQL and built an interactive dashboard with filters, trend charts and customer segment pages.</li>
+            <li><strong>Reporting:</strong> Compiled findings into a stakeholder-ready report and PPT summarizing insights and recommendations.</li>
+          </ol>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Sample SQL Questions Answered</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Revenue by gender and by age_group.</li>
+            <li>Subscription adoption impact: average spend of subscribers vs non-subscribers.</li>
+            <li>Top products per category and discount-dependent products.</li>
+            <li>Customer segmentation into New, Returning, Loyal using previous purchase counts.</li>
+            <li>Repeat buyers & likelihood to subscribe (customers with &gt;5 purchases).</li>
+          </ul>
+          <p className="text-sm text-gray-400 mt-3">Example SQL (simplified):</p>
+          <pre className="bg-[#021425] text-xs p-3 rounded text-gray-300 overflow-auto">SELECT age_group, SUM(purchase_amount) as revenue FROM purchases GROUP BY age_group ORDER BY revenue DESC;</pre>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Key Findings</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Only <strong>27%</strong> of customers are subscribers — major conversion opportunity.</li>
+            <li>Female customers spend slightly higher than overall average ($60.25 vs $59.76).</li>
+            <li>Clothing leads revenue and transaction count; Accessories are second. Footwear and Outerwear underperform.</li>
+            <li>Medium (45%) and Large (27%) sizes dominate demand — inventory planning should prioritize these.</li>
+            <li>Spring has the highest sales; Summer is the lowest.</li>
+            <li>Young Adults are the most profitable segment across purchase frequency and payment methods.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Recommendations</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Implement targeted subscription campaigns for Young Adults and Middle-aged female customers with clear benefits (discounts, early access).</li>
+            <li>Run seasonal promotions and bundles for Footwear and Outerwear to lift demand.</li>
+            <li>Improve customer experience to increase review rating from 3.7 to 4.2+ through quality and returns policy improvements.</li>
+            <li>Optimize stock for M and L sizes and consider pre-orders for S and XL.</li>
+            <li>Use free-shipping thresholds (e.g. free shipping above $50) to grow average basket size.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">How to reproduce</h3>
+          <ol className="text-gray-300 list-decimal list-inside mt-2 space-y-2">
+            <li>Clone repository and ensure Python 3.9+, MySQL and Power BI Desktop are installed.</li>
+            <li>Install packages: <code>pip install -r requirements.txt</code>.</li>
+            <li>Run the notebook to clean data and export cleaned CSV.</li>
+            <li>Import SQL script into MySQL and load cleaned data.</li>
+            <li>Open Power BI, connect to MySQL, and load the provided .pbix file for dashboard visuals.</li>
+          </ol>
+        </section>
+
+      </div>
+    </div>
+  );
+}
+
+// Project: Car Sales Forecasting (Detailed Case Study)
+export function ProjectCarSales() {
+  return (
+    <div className="min-h-screen bg-[#031025] text-gray-100 p-8">
+      <div className="max-w-4xl mx-auto bg-[#041827] p-8 rounded-lg border border-gray-800">
+        <header className="flex items-center gap-6 mb-6">
+          <img src="/images/your-photo.jpg" alt="Kumar Gaurav" className="w-24 h-24 rounded-md border-2 border-[#C69B30] object-cover" />
+          <div>
+            <h1 className="text-2xl font-bold">Car Sales Forecasting</h1>
+            <p className="text-sm text-gray-300 mt-1">Model-wise forecasting for wholesale and retail, yearly and quarterly projections using regression methods.</p>
+            <a href="/assets/resume.pdf" className="inline-block mt-2 text-xs bg-[#C69B30] text-[#031025] px-3 py-1 rounded">Download Resume</a>
+          </div>
+        </header>
+
+        <section className="mb-6">
+          <h2 className="text-xl font-semibold mb-2">Project Summary</h2>
+          <p className="text-gray-300">Forecasts were produced for each car model to estimate wholesale and retail volumes for 2026–2028. The work included data cleaning, time-series feature preparation, and linear regression grouped by model names to produce annual and quarterly forecasts.</p>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Dataset & Challenges</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Dataset contained model-level sales, distribution channel (wholesale/retail), quarterly splits, and financial year labels.</li>
+            <li>Partial nulls in quarterly wholesale/retail required careful imputation and smoothing.</li>
+            <li>Multiple car model naming variations were standardized during cleaning.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Methodology</h3>
+          <ol className="text-gray-300 list-decimal list-inside mt-2 space-y-2">
+            <li>Aggregate historical sales to model-level yearly and quarterly time-series.</li>
+            <li>Feature engineering: lag features (1–4 quarters), rolling mean, month/quarter dummies.</li>
+            <li>Modeling: linear regression per model (simple, explainable) and grouped predictions for wholesale and retail separately.</li>
+            <li>Validation: backtest on historical years and measure MAE / RMSE per model.</li>
+            <li>Output: forecast CSVs and visualizations for Power BI integration.</li>
+          </ol>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Sample Code (concept)</h3>
+          <pre className="bg-[#021425] text-xs p-3 rounded text-gray-300 overflow-auto"># group by model and fit simple linear regression per model
+from sklearn.linear_model import LinearRegression
+for model, group in df.groupby('model_name'):
+    X = group[['year']]
+    y = group['total_units']
+    lr = LinearRegression().fit(X, y)
+    preds = lr.predict(future_years.reshape(-1,1))
+</pre>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Key Outputs</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Model-wise annual forecasts for 2026–2028 for wholesale and retail.</li>
+            <li>Quarterly breakdowns for each model to support production planning.</li>
+            <li>CSV exports and Power BI visuals for dashboards and stakeholder reporting.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Business Impact</h3>
+          <p className="text-gray-300">These forecasts help procurement and sales teams align production and inventory with expected demand per model and channel, reducing stock-outs and overproduction risk.</p>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">How to reproduce</h3>
+          <ol className="text-gray-300 list-decimal list-inside mt-2 space-y-2">
+            <li>Run the forecast notebook in the notebooks/ folder and review model metrics.</li>
+            <li>Check produced CSVs in outputs/forecasts and load them into Power BI for visualization.</li>
+          </ol>
+        </section>
+
+      </div>
+    </div>
+  );
+}
+
+// Project: HR Analytics (Detailed Case Study)
+export function ProjectHR() {
+  return (
+    <div className="min-h-screen bg-[#031025] text-gray-100 p-8">
+      <div className="max-w-4xl mx-auto bg-[#041827] p-8 rounded-lg border border-gray-800">
+        <header className="flex items-center gap-6 mb-6">
+          <img src="/images/your-photo.jpg" alt="Kumar Gaurav" className="w-24 h-24 rounded-md border-2 border-[#C69B30] object-cover" />
+          <div>
+            <h1 className="text-2xl font-bold">HR Analytics</h1>
+            <p className="text-sm text-gray-300 mt-1">Attrition analysis, employee segmentation and retention strategies using combined HR datasets.</p>
+            <a href="/assets/resume.pdf" className="inline-block mt-2 text-xs bg-[#C69B30] text-[#031025] px-3 py-1 rounded">Download Resume</a>
+          </div>
+        </header>
+
+        <section className="mb-6">
+          <h2 className="text-xl font-semibold mb-2">Project Summary</h2>
+          <p className="text-gray-300">This project explores employee attrition drivers, segments employees by tenure and performance, and recommends interventions to reduce turnover. Techniques include exploratory analysis, correlation checks, and basic predictive modeling for attrition risk.</p>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Dataset & Key Features</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Typical fields: Employee ID, Age, Department, Tenure, Salary Band, Performance Score, Last Promotion, Attrition Flag.</li>
+            <li>Data preparation: categorical encoding, handling missing promotion dates, tenure calculation.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Approach</h3>
+          <ol className="text-gray-300 list-decimal list-inside mt-2 space-y-2">
+            <li>EDA to identify high-attrition departments and tenure buckets.</li>
+            <li>Feature engineering: tenure groups, promotion lag, performance trends.</li>
+            <li>Modeling: logistic regression to flag high-risk employees and validate with ROC-AUC.</li>
+            <li>Recommendations: targeted retention programs, upskilling and promotion cadence improvements.</li>
+          </ol>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Key Findings</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>High attrition observed in early-tenure ( &lt;12 months) and specific departments.</li>
+            <li>Low promotion rates and stagnant performance trends correlate with attrition.</li>
+            <li>Employees with clear career progression and mentoring are less likely to leave.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">Recommendations</h3>
+          <ul className="text-gray-300 list-disc list-inside mt-2">
+            <li>Implement onboarding mentorship and early-career engagement for hires in first 12 months.</li>
+            <li>Track promotion lag and create fast-track programs for high performers.</li>
+            <li>Use attrition risk scoring to proactively retain high-value employees.</li>
+          </ul>
+        </section>
+
+        <section className="mb-6">
+          <h3 className="font-semibold">How to reproduce</h3>
+          <ol className="text-gray-300 list-decimal list-inside mt-2 space-y-2">
+            <li>Run the HR notebooks to reproduce EDA and model artifacts.</li>
+            <li>Connect outputs to Power BI for dashboards showing attrition by department and tenure.</li>
+          </ol>
+        </section>
+
+      </div>
+    </div>
+  );
+}
+
+// Projects wrapper with simple navigation to each project detail
+export default function ProjectsWrapper() {
+  return (
+    <div className="min-h-screen bg-[#031025] text-gray-100 p-8">
+      <div className="max-w-6xl mx-auto">
+        <nav className="flex gap-4 mb-6">
+          <a href="/projects/customer-shopping-behaviour.html" className="px-3 py-2 rounded bg-[#C69B30] text-[#031025]">Customer Shopping Behaviour</a>
+          <a href="/projects/car-sales-forecasting.html" className="px-3 py-2 rounded border border-gray-700">Car Sales Forecasting</a>
+          <a href="/projects/hr-analytics.html" className="px-3 py-2 rounded border border-gray-700">HR Analytics</a>
+        </nav>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-[#041827] p-6 rounded border border-gray-800">
+            <h3 className="font-semibold mb-2">Customer Shopping Behaviour</h3>
+            <p className="text-sm text-gray-300">Detailed case study covering dataset of 3,900 transactions, SQL analysis and Power BI dashboard.</p>
+            <a href="/projects/customer-shopping-behaviour.html" className="mt-3 inline-block text-sm bg-[#C69B30] text-[#031025] px-3 py-2 rounded">Open</a>
+          </div>
+
+          <div className="bg-[#041827] p-6 rounded border border-gray-800">
+            <h3 className="font-semibold mb-2">Car Sales Forecasting</h3>
+            <p className="text-sm text-gray-300">Model-wise forecasting with yearly & quarterly outputs for wholesale and retail.</p>
+            <a href="/projects/car-sales-forecasting.html" className="mt-3 inline-block text-sm bg-[#C69B30] text-[#031025] px-3 py-2 rounded">Open</a>
+          </div>
+
+          <div className="bg-[#041827] p-6 rounded border border-gray-800">
+            <h3 className="font-semibold mb-2">HR Analytics</h3>
+            <p className="text-sm text-gray-300">Attrition analysis, segmentation and retention recommendations.</p>
+            <a href="/projects/hr-analytics.html" className="mt-3 inline-block text-sm bg-[#C69B30] text-[#031025] px-3 py-2 rounded">Open</a>
+          </div>
+        </div>
+
+        <p className="text-xs text-gray-500 mt-6">Note: These pages are standalone React component templates. To deploy as static HTML pages, export each component to a matching HTML file or create routes in your React app.</p>
+      </div>
+    </div>
+  );
+}
