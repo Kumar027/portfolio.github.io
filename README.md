@@ -1,26 +1,34 @@
 📊 Customer Shopping Behaviour Analysis
-
-Data Detective: Turning data mysteries into clear business insights
+---
+## Data Detective: Turning data mysteries into clear business insights
 
 A complete end-to-end data analytics case study built using Python, MySQL and Power BI. This project takes raw customer shopping data and converts it into meaningful business insights that support decisions in marketing, retention, product mix, and customer experience.
 
-🏷️ Tech Stack & Skills
+----
+
+## 🏷️ Tech Stack & Skills
 Category	Tools
 Programming	Python, Pandas, NumPy, Matplotlib, Seaborn
 Database	MySQL
 BI & Reporting	Power BI, MS Word, PowerPoint
 Others	Git, EDA, Data Cleaning, Data Modeling, Customer Segmentation
 
-Badges
+---
+
+## Badges
 Python MySQL Power BI Pandas Seaborn Data Analytics EDA Customer Segmentation
 
-🧠 Project Overview
+--
+
+## 🧠 Project Overview
 
 This project analyzes the shopping behaviour of 3,900 customers across multiple product categories. The goal was to understand spending patterns, customer segments, subscription impact, product category performance, seasonal trends, and factors influencing retention.
 
 The outcome of this study guides decisions in pricing, marketing, product planning, and customer loyalty programs.
 
-📂 Dataset Summary
+---
+
+## 📂 Dataset Summary
 
 Rows: 3,900
 
@@ -36,7 +44,9 @@ Behaviour: Discount, Promo Code, Previous Purchases, Frequency, Rating, Shipping
 
 Missing Values: 37 missing Review Ratings (handled in cleaning)
 
-🚀 Project Workflow
+---
+
+## 🚀 Project Workflow
 
 Full business analytics lifecycle from raw data to insights
 
@@ -50,7 +60,9 @@ Interactive Dashboard Development (Power BI)
 
 Insights & Storytelling through Reports & PPT
 
-✅ Python Work Done
+---
+
+## ✅ Python Work Done
 
 Loaded data using Pandas
 
@@ -64,7 +76,9 @@ Age Group
 
 Purchase Frequency (days)
 
-🗄 SQL Analysis Performed
+---
+
+## 🗄 SQL Analysis Performed
 
 Key business questions answered using SQL:
 
@@ -82,14 +96,18 @@ Shipping preference impact on spending
 
 Revenue by age group and purchase frequency
 
-📊 Dashboard Preview
+---
+
+## 📊 Dashboard Preview
 
 Replace images once uploaded to GitHub
 
 Page	Preview
 Overview Dashboard	
 
-Customer Insights	
+---
+
+## Customer Insights	
 🔍 Key Insights
 
 Only 27 percent customers subscribed, leaving 73 percent as conversion opportunity
@@ -106,7 +124,9 @@ Young Adults are the most profitable and active segment across categories
 
 Free Shipping is the most preferred delivery option across all ages
 
-📌 Recommendations for the Business
+---
+
+## 📌 Recommendations for the Business
 
 Target subscription campaigns to Young Adults and Middle-aged, especially females
 
