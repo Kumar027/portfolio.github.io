@@ -99,8 +99,8 @@ Revenue by age group and purchase frequency
 ---
 
 ## 📊 Dashboard Preview
+![Dashboard](Dashboard%20Image.png)
 
-Replace images once uploaded to GitHub
 
 Page	Preview
 Overview Dashboard	
