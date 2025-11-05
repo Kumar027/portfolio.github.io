@@ -1,0 +1,288 @@
+<!--
+Portfolio GitHub Pages - Single-page + Project Modals (Hybrid)
+Theme: Navy & Gold
+Photo style: Semi-formal headshot (placeholder)
+
+How to use:
+1. Save this file as index.html at your repository root (or in /docs for GitHub Pages).
+2. Replace placeholder images (PROFILE_IMG, DASH_1, DASH_2) with your images in an /assets folder.
+3. Update links to project repos, PBIX and report files where marked.
+4. Commit and push to GitHub. In repo Settings > Pages set source to 'main branch / (root)' or 'main branch /docs'.
+
+Notes:
+- This single HTML file includes project detail modals to act like separate project pages (hybrid UX).
+- Files to supply: profile.jpg, dashboard1.png, dashboard2.png, resume.pdf, project PBIXs, SQL scripts, notebooks.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kumar Gaurav — Data Analyst Portfolio</title>
+  <meta name="description" content="Professional data analyst portfolio — Customer Shopping Behaviour Analysis, Sentiment Analysis, Sales Forecasting.">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    :root{ --navy:#0b2545; --gold:#d4af37; --muted:#6b7a90; --bg:#f6f8fb; --card:#ffffff }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#122033; background:var(--bg)}
+    header{background:linear-gradient(180deg, var(--navy), rgba(11,37,69,0.95)); color:white; padding:56px 20px}
+    .container{max-width:1100px;margin:0 auto}
+    nav{display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo h1{margin:0;font-size:18px;letter-spacing:0.4px}
+    .nav-links a{color:rgba(255,255,255,0.9);text-decoration:none;margin-left:18px}
+    .hero{display:flex;gap:32px;align-items:center;padding:40px 0}
+    .hero-left{flex:1}
+    .hero-right{width:220px}
+    .profile{width:220px;height:220px;border-radius:12px;overflow:hidden;border:6px solid rgba(212,175,55,0.14)}
+    .profile img{width:100%;height:100%;object-fit:cover}
+    h2{margin:0 0 8px 0;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .card{background:var(--card);border-radius:10px;padding:18px;box-shadow:0 6px 20px rgba(11,37,69,0.06)}
+    .card h3{margin:4px 0 8px 0}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{background:linear-gradient(90deg, rgba(11,37,69,0.03), transparent);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--navy)}
+
+    /* Projects */
+    section.projects{padding:48px 0}
+    .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project-card{background:var(--card);border-radius:10px;padding:16px;cursor:pointer;transition:transform .18s ease, box-shadow .18s}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(11,37,69,0.08)}
+    .project-card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+    .tag{background:var(--gold);color:var(--navy);padding:6px 8px;border-radius:6px;font-weight:600;font-size:12px}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);padding:24px}
+    .modal.open{display:flex}
+    .modal-card{width:100%;max-width:900px;background:var(--card);border-radius:10px;padding:20px;box-shadow:0 30px 80px rgba(2,6,23,0.5)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center}
+    .modal-body{margin-top:12px;display:grid;grid-template-columns:1fr 320px;gap:16px}
+    .modal-body img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+    .close-btn{background:#f3f5f8;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+
+    footer{padding:28px 0;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){.cards{grid-template-columns:repeat(1,1fr)} .project-grid{grid-template-columns:repeat(1,1fr)} .modal-body{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo"><img src="assets/logo.svg" alt="logo" style="width:44px;height:44px;border-radius:8px;background:var(--gold);padding:6px"><h1>Gaurav — Data Analyst</h1></div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a href="assets/resume.pdf" target="_blank" style="background:var(--gold);color:var(--navy);padding:8px 12px;border-radius:8px;margin-left:12px;text-decoration:none;font-weight:600">Resume</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-left">
+          <h2>Hi — I’m Kumar Gaurav</h2>
+          <p class="lead">Data Detective: Turning data mysteries into clear business insights. I build end-to-end analytics workflows — Python, SQL, Power BI — and translate findings into actionable business decisions.</p>
+
+          <div class="cards">
+            <div class="card">
+              <h3>Current Project</h3>
+              <p style="margin:6px 0 12px 0;color:var(--muted)">Customer Shopping Behaviour Analysis — end-to-end BI case study with Power BI dashboard and SQL-backed analytics.</p>
+              <div style="display:flex;gap:8px">
+                <a href="#projects" style="text-decoration:none;color:var(--navy);font-weight:600">View case study</a>
+                <a href="assets/BRD - Customer Shopping Behaviour.docx" style="margin-left:auto;color:var(--muted);text-decoration:none" download>Download BRD</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Key Tools</h3>
+              <div class="skills" style="margin-top:10px">
+                <div class="skill">Python</div>
+                <div class="skill">MySQL</div>
+                <div class="skill">Power BI</div>
+                <div class="skill">Pandas</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Data Viz</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Contact</h3>
+              <p style="margin:6px 0 8px 0;color:var(--muted)">Email: yourmail@gmail.com</p>
+              <p style="margin:0;color:var(--muted)">LinkedIn: your-linkedin</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile">
+            <img src="assets/profile.jpg" alt="Profile Photo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="skills" style="padding:36px 0">
+      <h2 style="margin-bottom:10px">Skills & Expertise</h2>
+      <p style="margin-top:0;color:var(--muted)">Technical skills, analytics practice, and BI experience that drive project outcomes.</p>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <span class="skill">EDA</span>
+        <span class="skill">Data Cleaning</span>
+        <span class="skill">Feature Engineering</span>
+        <span class="skill">SQL Analysis</span>
+        <span class="skill">Power BI Dashboards</span>
+        <span class="skill">Reporting & Storytelling</span>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2 style="margin-bottom:6px">Featured Projects</h2>
+      <p style="margin-top:0;color:var(--muted)">Click a project to view the case study</p>
+
+      <div class="project-grid" style="margin-top:16px">
+        <!-- Project 1 -->
+        <div class="project-card" data-project="p1">
+          <img src="assets/dash_1.png" alt="Customer Shopping Behaviour">
+          <h3>Customer Shopping Behaviour Analysis</h3>
+          <div class="meta"><span style="color:var(--muted)">3,900 rows • Retail</span><span class="tag">Power BI</span></div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-project="p2">
+          <img src="assets/dash_2.png" alt="Sentiment Analysis">
+          <h3>Sentiment Analysis — MakeMyTrip Reviews</h3>
+          <div class="meta"><span style="color:var(--muted)">NLP • Product Reviews</span><span class="tag">Python + NLP</span></div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-project="p3">
+          <img src="assets/dash_3.png" alt="Sales Forecasting">
+          <h3>Sales Forecasting (Python + ML)</h3>
+          <div class="meta"><span style="color:var(--muted)">Time Series • Regression</span><span class="tag">ML</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal: Project 1 -->
+    <div id="modal-p1" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Customer Shopping Behaviour Analysis</h3>
+          <button class="close-btn" data-close>Close</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <p style="color:var(--muted)">A full end-to-end analytics case study. Dataset: 3,900 transactions. Stack: Python, MySQL, Power BI.</p>
+            <ul>
+              <li>EDA & data cleaning in Python (Pandas)</li>
+              <li>Feature engineering: age groups, purchase frequency</li>
+              <li>Loaded cleaned data into MySQL and ran analytical queries</li>
+              <li>Built Power BI dashboard connected to MySQL</li>
+              <li>Deliverables: PBIX, SQL scripts, report, presentation</li>
+            </ul>
+            <p><strong>Key insights:</strong> 27% subscription rate; Clothing top category; Young Adults highest LTV; Size demand concentrated on M and L.</p>
+
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a href="https://github.com/your-username/customer-shopping-behaviour" target="_blank" style="text-decoration:none;padding:8px 12px;border-radius:8px;background:var(--navy);color:white">View Repo</a>
+              <a href="assets/Customer_Shopping_Dashboard.pbix" download style="text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid #e9eef5;color:var(--navy)">Download PBIX</a>
+              <a href="assets/BRD - Customer Shopping Behaviour.docx" download style="text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid #e9eef5;color:var(--navy)">Download BRD</a>
+            </div>
+          </div>
+          <aside>
+            <img src="assets/dash_1.png" alt="dashboard preview">
+            <div style="margin-top:10px;color:var(--muted);font-size:14px">Role: Data analysis, SQL modelling, Power BI dashboarding.</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Project 2 -->
+    <div id="modal-p2" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Sentiment Analysis — MakeMyTrip</h3>
+          <button class="close-btn" data-close>Close</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <p style="color:var(--muted)">NLP project analysing customer reviews on MakeMyTrip to extract sentiment trends and feature feedback.</p>
+            <ul>
+              <li>Data collection & cleaning from review datasets</li>
+              <li>Text preprocessing: tokenization, lemmatization, stopword removal</li>
+              <li>Modeling: Logistic Regression, Naive Bayes and Transformer-based validation</li>
+              <li>Dashboarded sentiment trends and topic extraction</li>
+            </ul>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a href="https://github.com/your-username/makemytrip-sentiment" target="_blank" style="text-decoration:none;padding:8px 12px;border-radius:8px;background:var(--navy);color:white">View Repo</a>
+            </div>
+          </div>
+          <aside>
+            <img src="assets/dash_2.png" alt="sentiment preview">
+            <div style="margin-top:10px;color:var(--muted);font-size:14px">Role: Data engineering, NLP modeling, visualization.</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Project 3 -->
+    <div id="modal-p3" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Sales Forecasting (Python + ML)</h3>
+          <button class="close-btn" data-close>Close</button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <p style="color:var(--muted)">Time series forecasting to predict retail and wholesale sales per model. Built simple, explainable models for quarterly forecasts.</p>
+            <ul>
+              <li>Data cleaning and seasonal decomposition</li>
+              <li>Linear regression and ARIMA baselines</li>
+              <li>Forecast horizon: 2026–2028 quarterly estimates</li>
+              <li>Output exported to CSV and visualized in Power BI</li>
+            </ul>
+            <div style="display:flex;gap:10px;margin-top:10px">
+              <a href="https://github.com/your-username/sales-forecasting" target="_blank" style="text-decoration:none;padding:8px 12px;border-radius:8px;background:var(--navy);color:white">View Repo</a>
+            </div>
+          </div>
+          <aside>
+            <img src="assets/dash_3.png" alt="forecast preview">
+            <div style="margin-top:10px;color:var(--muted);font-size:14px">Role: Forecast modelling, evaluation, dashboard integration.</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <p style="margin:6px 0">Built with ♥ by Kumar Gaurav • <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a> • <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a></p>
+      <p style="margin:6px 0;color:var(--muted)">To publish: push this file (and /assets) to your repo root, then enable GitHub Pages from repo settings.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Modal handlers
+    document.querySelectorAll('.project-card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const id = card.dataset.project;
+        document.getElementById('modal-' + id).classList.add('open');
+        document.getElementById('modal-' + id).setAttribute('aria-hidden','false');
+      })
+    })
+    document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', (e)=>{
+      const modal = btn.closest('.modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }))
+    document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click', (e)=>{ if(e.target===m){ m.classList.remove('open'); m.setAttribute('aria-hidden','true') }}))
+  </script>
+</body>
+</html>
