@@ -1,3 +1,11 @@
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live_Now-navy)](https://your-username.github.io/customer-shopping-portfolio/)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue)](#)
+[![MySQL](https://img.shields.io/badge/Database-MySQL-orange)](#)
+[![Power BI](https://img.shields.io/badge/Power_BI-Interactive_Dashboard-gold)](#)
+[![Pandas](https://img.shields.io/badge/Library-Pandas-green)](#)
+[![Status](https://img.shields.io/badge/Status-Completed-success)](#)
+
+
 📊 Customer Shopping Behaviour Analysis
 ---
 ## Data Detective: Turning data mysteries into clear business insights
